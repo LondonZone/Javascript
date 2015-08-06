@@ -9,14 +9,17 @@
         previous = $(this);
 
     });
-     previous.removeClass('visible');
-     //ensure visibiltiy is changed after another tab is clicked
+     
     
     //show all publicaitions 
     if($('#view-all').click(function())){
         $("div[title='main'] li").removeClass("hidden");
+         previous = $(this);
     });
 
+
+    previous.removeClass('visible');
+     //ensure visibiltiy is changed after another tab is clicked
 }
 
 
