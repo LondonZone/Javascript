@@ -1,24 +1,25 @@
-
 //definining Function - click listiner
- document.onclick = function() {
-    var previous;
-     $("div[title='main'] li").click(function(){
-
-        // this targets the specific element that you clicked on
-        $(this).addClass("visible") 
-        previous = $(this);
-
-    });
-     previous.removeClass('visible');
-     //ensure visibiltiy is changed after another tab is clicked
+$(document).ready(function(){
+    var previous=$('section#recent');
+    var myClass;
     
-    //show all publicaitions 
-    if($('#view-all').click(function())){
-        $("div[title='main'] li").removeClass("hidden");
+     $("ul[title='main'] > li").click(function(){
+        alert("hello world");
+        // this targets the specific element that you clicked on
+        //$(this).addClass("visible") 
+        myClass = $(this).attr("class");
+        console.log(myClass);
+        $('section#'+myClass).removeClass('hidden').addClass('visible');
+        previous = $(this);
+        console.log(previous);
+
     });
-
-}
-
-
-
-
+       
+    //show all publicaitions 
+    //$('#view-all').click(function(){
+     //   $("ul[title='main'] > li").removeClass("hidden");
+       //  previous = $(this);
+   // });
+    previous.removeClass('visible');
+     //ensure visibiltiy is changed after another tab is clicked
+}); // end of function
