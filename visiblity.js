@@ -2,11 +2,11 @@
 $(document).ready(function(){
     var previous=$('section#recent');
     var myClass;
-    
+
      $("ul[title='main'] > li").click(function(){
         alert("hello world");
         // this targets the specific element that you clicked on
-        //$(this).addClass("visible") 
+        //$(this).addClass("visible")
         myClass = $(this).attr("class");
         console.log(myClass);
         $('section#'+myClass).removeClass('hidden').addClass('visible');
@@ -14,8 +14,8 @@ $(document).ready(function(){
         console.log(previous);
 
     });
-       
-    //show all publicaitions 
+
+    //show all publicaitions
     //$('#view-all').click(function(){
      //   $("ul[title='main'] > li").removeClass("hidden");
        //  previous = $(this);
