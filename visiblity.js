@@ -9,13 +9,12 @@ $(document).ready(function(){
      $("ul[title='main'] > li").click(function(){
         alert("hello world");
 
-        // this targets the specific element that you clicked on
-        //$(this).addClass("visible") 
-
+        // this targets the specific element that you clicked on 
         myClass = $(this).attr("class");
-        console.log(myClass);
+        console.log(myClass); //Check class is selected
+
         $('section#'+myClass).removeClass('hidden').addClass('visible');
-        //previous = $(this);
+        previous = $(this);
         console.log(previous);
         previous.removeClass('visible').addClass('hidden');
     });
@@ -37,7 +36,7 @@ $(document).ready(function(){
 
         if ($(currentClass).hasClass('visible'))
         {
-            previous = sectionId[i];
+            previous = $("section#"+sectionId[i]);
             console.log(previous);
             break;  
         }
