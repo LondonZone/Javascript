@@ -2,49 +2,37 @@
 $(document).ready(function(){
     
     //Global Variable Declarations
-    var previous=$('section#recent'); //Base case
+    var previous=$('section#all-pubs'); //Base case
     var myClass;
-    var sectionId; //Array of Section Id's
-    
+    var sectionId = ['all-pubs', 'CVPR', 'ECCV','ICCV','siggraph','T-PAMI','IJCV']; //Array of Section Id's
+
      $("ul[title='main'] > li").click(function(){
-        alert("hello world");
 
-        // this targets the specific element that you clicked on 
+        // this targets the specific element that you clicked on
         myClass = $(this).attr("class");
-        console.log(myClass); //Check class is selected
 
-        $('section#'+myClass).removeClass('hidden').addClass('visible');
-        previous = $(this);
-        console.log(previous);
-        previous.removeClass('visible').addClass('hidden');
+        //TODO get previous working (DONE)
+        // Test edge casesif MyClass=previous
+        //ensure visibiltiy is changed after another tab is clicked
+        for ( var i = 0; i < sectionId.length; i++ ){
+
+            var currentClass = sectionId[i];
+            //console.log(currentClass); //test loop is working 
+            if ($('#'+currentClass).hasClass('visible'))
+            {
+                previous=$('section#'+sectionId[i]);
+                $(previous).removeClass('visible').addClass('hidden');
+                break;  
+            }
+        }
+        $('section#'+myClass).removeClass('hidden').addClass('visible'); //Show Current Section
     });
     
     //show all publicaitions 
-    /*$('#view-all').click(function(){
-        $("ul[title='main'] > li").removeClass("hidden").addClass('visible');
-         previous = $(this);
-   });*/
+  $(".view-all").click(function(){
+            $('section#all-pubs').removeClass('hidden').addClass('visible');
 
-    
-    //TODO get previous working
-    //ensure visibiltiy is changed after another tab is clicked
-    sectionId = ['recent', '2014', '2013', '2012', '2011','2010'];
-
-    for ( var i = 0; i < sectionId.length; i++ ){
-
-        var currentClass = sectionId[i];
-
-        if ($(currentClass).hasClass('visible'))
-        {
-            previous = $("section#"+sectionId[i]);
-            console.log(previous);
-            break;  
-        }
-    }
-
-    previous.removeClass('visible');
-    console.log(previous);
+   }); 
+    console.log('previous = '+previous);
 
 }); // end of function
-
-
